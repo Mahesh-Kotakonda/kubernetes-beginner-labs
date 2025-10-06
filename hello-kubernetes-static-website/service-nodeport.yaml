@@ -5,14 +5,11 @@ metadata:
   labels:
     app: hello-k8s
 spec:
-  # Use NodePort to expose the Service externally.
-  # This makes the service accessible on every node's IP at a static port (NodePort).
-  type: NodePort 
+  type: NodePort
   selector:
-    # This must match the 'app: hello-k8s' label defined in your deployment.yaml
-    app: hello-k8s 
+    app: hello-k8s  # Must match your Deployment's pod label
   ports:
     - protocol: TCP
-      port: 80       # The internal cluster port the Service listens on
-      targetPort: 80 # The port the container is listening on (from the Dockerfile/Nginx)
-      # nodePort: 30000-32767 # Kubernetes will automatically assign a port in this range if omitted
+      port: 80          # Cluster-internal service port
+      targetPort: 80    # Container port (Nginx)
+      nodePort: 30080   # Optional fixed external port (between 30000–32767)
