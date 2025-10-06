@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-k8s-pod
+  labels:
+    app: hello-k8s
+spec:
+  containers:
+  - name: hello-k8s-container
+    image: maheshkotakonda/hello-kubernetes-static-website:latest
+    ports:
+    - containerPort: 80
