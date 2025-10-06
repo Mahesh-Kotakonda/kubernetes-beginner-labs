@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-kubernetes-service
+spec:
+  # ClusterIP makes the service only reachable from within the cluster.
+  # If you want external access, change this to NodePort or LoadBalancer (e.g., for Minikube or cloud).
+  type: ClusterIP 
+  selector:
+    app: hello-k8s # This must match the label in deployment.yaml
+  ports:
+    - protocol: TCP
+      port: 80 # The port the Service itself will listen on
+      targetPort: 80 # The port the container is listening on (from the Dockerfile)
