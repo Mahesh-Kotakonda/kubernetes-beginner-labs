@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-kubernetes-deployment
+  labels:
+    app: hello-k8s
+spec:
+  # Run 3 copies of your application
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-k8s
+  template:
+    metadata:
+      labels:
+        app: hello-k8s
+    spec:
+      containers:
+      - name: hello-k8s-container
+        image: <DOCKER_IMAGE_NAME>:latest 
+        ports:
+        - containerPort: 80
+        # Minimal resource requests
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
