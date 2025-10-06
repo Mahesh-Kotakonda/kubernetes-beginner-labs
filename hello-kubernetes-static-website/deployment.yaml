@@ -5,7 +5,6 @@ metadata:
   labels:
     app: hello-k8s
 spec:
-  # Run 3 copies of your application
   replicas: 3
   selector:
     matchLabels:
@@ -17,10 +16,9 @@ spec:
     spec:
       containers:
       - name: hello-k8s-container
-        image: <DOCKER_IMAGE_NAME>:latest 
+        image: maheshkotakonda/hello-kubernetes-static-website:latest
         ports:
         - containerPort: 80
-        # Minimal resource requests
         resources:
           requests:
             memory: "64Mi"
