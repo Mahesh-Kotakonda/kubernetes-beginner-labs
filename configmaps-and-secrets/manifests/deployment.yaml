@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-app
+  template:
+    metadata:
+      labels:
+        app: demo-app
+    spec:
+      containers:
+      - name: demo-app
+        image: demo-app:local
+        imagePullPolicy: Never # use local image only
+        ports:
+        - containerPort: 8080
+
+        # Load entire ConfigMap as environment variables
+        envFrom:
+        - configMapRef:
+            name: app-config
+
+        # Load specific Secret key as environment variable
+        env:
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: password
+
+        # Mount the same Secret as file for live updates
+        volumeMounts:
+        - name: secret-volume
+          mountPath: /etc/db
+          readOnly: true
+
+      volumes:
+      - name: secret-volume
+        secret:
+          secretName: db-secret
