@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lifecycle-demo-init
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lifecycle-demo-init
+  template:
+    metadata:
+      labels:
+        app: lifecycle-demo-init
+    spec:
+      initContainers:
+        - name: wait-for-db
+          image: busybox
+          command: ['sh', '-c', 'echo "Waiting for database..."; sleep 5; echo "DB ready!"']
+      containers:
+        - name: app
+          image: lifecycle-demo:latest
+          ports:
+            - containerPort: 8080
