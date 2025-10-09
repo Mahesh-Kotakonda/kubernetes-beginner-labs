@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lifecycle-demo-sidecar
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lifecycle-demo-sidecar
+  template:
+    metadata:
+      labels:
+        app: lifecycle-demo-sidecar
+    spec:
+      volumes:
+        - name: shared-logs
+          emptyDir: {}
+      containers:
+        - name: app
+          image: lifecycle-demo:latest
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: shared-logs
+              mountPath: /var/log/app
+        - name: log-sidecar
+          image: busybox
+          command: ['sh', '-c', 'tail -F /var/log/app/app.log || true']
+          volumeMounts:
+            - name: shared-logs
+              mountPath: /var/log/app
