@@ -19,5 +19,7 @@ spec:
       containers:
         - name: app
           image: lifecycle-demo:latest
+          imagePullPolicy: Never
           ports:
             - containerPort: 8080
+
