@@ -15,6 +15,7 @@ spec:
       containers:
         - name: app
           image: lifecycle-demo:latest
+          imagePullPolicy: Never
           ports:
             - containerPort: 8080
           startupProbe:
@@ -35,3 +36,4 @@ spec:
               port: 8080
             initialDelaySeconds: 20
             periodSeconds: 10
+
