@@ -18,6 +18,7 @@ spec:
       containers:
         - name: app
           image: lifecycle-demo:latest
+          imagePullPolicy: Never
           ports:
             - containerPort: 8080
           volumeMounts:
@@ -29,3 +30,4 @@ spec:
           volumeMounts:
             - name: shared-logs
               mountPath: /var/log/app
+
