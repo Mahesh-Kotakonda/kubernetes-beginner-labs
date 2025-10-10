@@ -16,9 +16,11 @@ spec:
       containers:
         - name: app
           image: lifecycle-demo:latest
+          imagePullPolicy: Never
           ports:
             - containerPort: 8080
           lifecycle:
             preStop:
               exec:
                 command: ["sh", "-c", "echo 'PreStop hook: Gracefully shutting down...'; sleep 10"]
+
