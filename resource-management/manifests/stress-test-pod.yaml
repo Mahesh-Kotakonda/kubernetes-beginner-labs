@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: memory-hog
+  namespace: resource-demo
+  labels:
+    app: resource-demo
+spec:
+  containers:
+  - name: memory-hog
+    image: python:3.11-slim
+    command: ["python", "-c"]
+    args:
+      - |
+        import os, time
+        mb = int(os.getenv("ALLOC_MB","900"))
+        print(f"Allocating {mb}MB")
+        a = ' ' * (mb * 1024 * 1024)
+        time.sleep(3600)
+    env:
+      - name: ALLOC_MB
+        value: "900"
+    resources:
+      requests:
+        cpu: "200m"
+        memory: "256Mi"
+      limits:
+        cpu: "600m"
+        memory: "1Gi"
