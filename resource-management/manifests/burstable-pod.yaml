@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: burstable-pod
+  labels:
+    app: resource-demo
+spec:
+  containers:
+  - name: burstable
+    image: python:3.11-slim
+    command: ["python", "-c"]
+    args:
+      - |
+        import time
+        # allocate variable amount of memory depending on ENV (default 400MB)
+        import os
+        mb = int(os.getenv("ALLOC_MB", "400"))
+        a = ' ' * (mb * 1024 * 1024)
+        time.sleep(3600)
+    env:
+      - name: ALLOC_MB
+        value: "400"
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "128Mi"
+      limits:
+        cpu: "500m"
+        memory: "512Mi"
