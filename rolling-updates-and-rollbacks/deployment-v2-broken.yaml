@@ -23,7 +23,7 @@ spec:
       containers:
       - name: webapp
         # ❌ Broken image (invalid tag to simulate failure)
-        image: nginx:doesnotexist
+        image: nginx:1.25
         ports:
         - containerPort: 80
         livenessProbe:
@@ -32,3 +32,4 @@ spec:
             port: 80
           initialDelaySeconds: 10
           periodSeconds: 5
+
