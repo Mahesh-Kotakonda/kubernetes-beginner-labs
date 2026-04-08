@@ -1,0 +1,34 @@
+1. launch the server
+2. update sg to 3000 and 7007
+3. sudo apt update && sudo apt upgrade -y
+sudo apt install -y git curl build-essential python3 python3-pip python3-venv libsqlite3-dev
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+source ~/.bashrc
+nvm install 22
+nvm use 22
+node -v
+npm -v
+corepack enable
+corepack prepare yarn@4.4.1 --activate
+yarn -v
+npx @backstage/create-app@latest
+change working dir into backstage folder
+update the app-config.yaml to listen: host: 0.0.0.0
+before that generate the GitHub app and oauth app
+give the proper permissions to GitHub app like action administarotor and issuses content pr workflows and in org select members
+install required plugins and add into front end and backend
+make sure updated app config file with cors and backstage url to ip
+add resolver I mean user entity match with name
+make sure calling same plugin in backend not acceptable
+you can add things in local or directly app configs
+add auth and org data and integration
+GitHub actions integration 
+download add to froentend and catalog file annotation alwas pass the repo name and component name
+if you want to use the paremaetees then pass to content 
+
+for the template 
+add this one in template
+            allowedOwners:
+              - maheshfirstorg
+
+yarn start
