@@ -1,6 +1,6 @@
 https://github.com/maheshfirstorg/demo-service/blob/main/catalog-info.yaml
 
-
+C:\Users\mahesh\.cursor\mcp.json
 {
   "mcpServers": {
     "backstage": {
