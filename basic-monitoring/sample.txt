@@ -1,5 +1,17 @@
 https://github.com/maheshfirstorg/demo-service/blob/main/catalog-info.yaml
 
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: demo-service
+  description: Demo service for Kubernetes
+  annotations:
+    backstage.io/kubernetes-id: demo-service
+spec:
+  type: service
+  owner: user:guest
+  lifecycle: production
+
 1. launch the server
 2. update sg to 3000 and 7007
 3. sudo apt update && sudo apt upgrade -y
