@@ -1,5 +1,16 @@
 https://github.com/maheshfirstorg/demo-service/blob/main/catalog-info.yaml
 
+
+{
+  "mcpServers": {
+    "backstage": {
+      "url": "http://54.167.87.217:7007/api/mcp-actions/v1",
+      "headers": {
+        "Authorization": "Bearer my-test-token"
+      }
+    }
+  }
+}
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
