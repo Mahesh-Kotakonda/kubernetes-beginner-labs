@@ -71,6 +71,9 @@ This means developers may still need to rely on multiple sources or individuals 
 
 There is currently no unified system that combines both technical insights and organizational context in one place.
 
+In some cases, shared configurations are used to access systems such as Kubernetes clusters. When multiple users operate using the same configuration, it becomes difficult to track who performed a specific action. This lack of user-level visibility can lead to challenges in auditing and accountability.
+
+
 
   Overview of Backstage
 
@@ -110,8 +113,11 @@ Kubernetes Visibility
 Backstage provides visibility into the health and status of services running in Kubernetes. Developers can check whether their services are running properly without switching to separate tools.
 
 Plugins and Integrations
-Backstage supports integration with various tools such as code repositories, monitoring systems, and security tools. These integrations bring all relevant information into a single platform, reducing the need to switch between multiple applications.
+Backstage supports a wide range of plugins to integrate with different tools such as code repositories, monitoring systems, Kubernetes, and security platforms. There are many pre-built plugins available, and based on requirements, additional plugins can be integrated.
 
+If a required integration is not available, custom plugins can be developed to extend Backstage functionality and connect with internal or external systems.
+Tech Radar
+Backstage provides a Tech Radar feature that helps teams understand which technologies, tools, and frameworks are being used across the organization. It can categorize technologies into groups such as adopt, trial, or hold. This helps developers make informed decisions and align with recommended technologies.
   
 🟢 Section 6: How Backstage Works (High-Level) (Raw Content)
 
@@ -191,6 +197,8 @@ Faster Onboarding
 New team members can quickly understand the system, services, and ownership without relying heavily on others.
 
 Overall, Backstage improves the development experience by making information easily accessible and reducing complexity in managing large systems.
+Improved Access Control and Traceability
+With integration to identity providers such as GitHub or Azure Active Directory, each user accesses Backstage using their own credentials. This helps in controlling access and improves traceability of actions, unlike shared configurations where user-level tracking is not possible.
 
   🟢 Section 9: Demo Scope and Walkthrough (Raw Content)
 
@@ -251,6 +259,8 @@ As we are planning to move from Azure DevOps to GitHub, integration and alignmen
 
 Ongoing Maintenance
 Backstage is not a one-time setup. It requires continuous updates, plugin management, and improvements to keep it aligned with evolving needs.
+Custom Plugin Development Effort
+While many plugins are available, some integrations may require custom plugin development. This requires additional effort and understanding of the Backstage framework.
 
 Overall, while Backstage offers strong capabilities, it requires proper planning, setup, and ongoing effort to achieve maximum value.
 
