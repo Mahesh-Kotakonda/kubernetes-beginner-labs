@@ -1,3 +1,5 @@
+https://github.com/maheshfirstorg/demo-service/blob/main/catalog-info.yaml
+
 1. launch the server
 2. update sg to 3000 and 7007
 3. sudo apt update && sudo apt upgrade -y
